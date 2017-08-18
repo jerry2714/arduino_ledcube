@@ -46,9 +46,9 @@ inline void send_out();
 
 void standBy()
 {
-    red(&ledstrip);
-    /*green(&ledstrip);
-    blue(&ledstrip);
+    //red(&ledstrip);
+    green(&ledstrip);
+    /*blue(&ledstrip);
     cyan(&ledstrip);
     magenta(&ledstrip);
     yellow(&ledstrip);*/

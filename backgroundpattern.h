@@ -11,7 +11,7 @@ class Pattern_full : public Pattern
 	public:
 		void drawPattern(Adafruit_NeoPixel& strip, int* color)
 		{
-			for(int i = 0; i < strip.numPixels(); i++)
+			for(int i = 0; i < 216; i++)
 				strip.setPixelColor(i, color[0], color[1], color[2]);
 		}
 };

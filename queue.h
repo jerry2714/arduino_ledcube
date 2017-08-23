@@ -1,6 +1,5 @@
 #ifndef __QUEUE_H__
 #define __QUEUE_H__
-#include<arduino.h>
 #define QUEUE_SIZE 512
 #define byte unsigned char
 class CQueue

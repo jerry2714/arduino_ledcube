@@ -18,20 +18,11 @@ void setup() {
 
 void loop() {
     
-    unsigned long start, end;
-    
-    byte led[4] = {0};
-    int i = 0, j = 0;
-    int count = 0;
-    
-    
-    
-    sp.readData(queue.getQueueSpace());
-    while(true)
-    {
-        commandTranslate();
-    }
-
+	commandTranslate();
+}
+void serialEvent() {
+	
+	loadData(queue.getQueueSpace());
 }
 inline byte readByte()
 {
@@ -50,8 +41,6 @@ void commandTranslate()
     for(int i = 0; i < require_data_size; i++)
     {
         command[i] = readByte();
-        //Serial.println(command[i]);
-        
     }
     
     dataFlag = command[0] % 2;
@@ -100,7 +89,6 @@ void commandTranslate()
 inline void loadData(int max)
 {
     sp.readData(max);
-    sp.loadData();
 }
 
 

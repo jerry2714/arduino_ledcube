@@ -7,7 +7,7 @@ void setup()
 	ledstrip.begin();
 	ledstrip.setBrightness(change_bright);
 	ledstrip.show();
-	standBy();
+	wdt_enable(WDTO_8S);
 
 	/* DataChangeSim(arr,size); */
 }
@@ -26,7 +26,10 @@ inline byte readByte()
 {
 	/* unsigned long time = millis(); */
 	while(queue.isEmpty())
+	{
 		loadData(queue.getQueueSpace());
+		wdt_reset();
+	}
 	return queue.pop();
 }
 
@@ -130,7 +133,7 @@ inline void setBackground(bool output, int num)
 		ptr = &pattern_core;
 	else if(num == 2)
 		ptr = &pattern_tree;
-	ptr->drawPattern(ledstrip, color);
+	ptr -> drawPattern(ledstrip, color);
 	if(output)
 		ledstrip.show();
 }
@@ -185,7 +188,8 @@ inline void strip(bool output, int offset, int length)
 int GCD(int a, int b)
 {
 	if(b)
-		while((a %= b) && (b %= a));
+		while((a %= b) && (b %= a))
+			wdt_reset();
 	return a + b;
 }
 
@@ -253,6 +257,7 @@ inline void set_line(bool output, int input001, int input002)
 			led[i][0] = x;
 			led[i][1] = y;
 			led[i][2] = z;
+			wdt_reset();
 		}
 
 		int t2[10];
@@ -260,6 +265,7 @@ inline void set_line(bool output, int input001, int input002)
 		for(int t = 0; t <= gcd; t++)
 		{
 			t2[t] = coordinateConvert(led[t][0], led[t][1], led[t][2]);
+			wdt_reset();
 		}
 
 		/* for(i=0;
@@ -272,6 +278,7 @@ inline void set_line(bool output, int input001, int input002)
 		for(int t = 0; t <= gcd; t++)
 		{
 			ledstrip.setPixelColor(t2[t], color[0], color[1], color[2]);
+			wdt_reset();
 
 			/* Serial.print(t2[t]);
 			   Serial.print(" ");

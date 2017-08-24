@@ -7,6 +7,7 @@
 
 
 #include<arduino.h>
+#include<avr/wdt.h>
 #include"queue.h"
 #include"SerialProcessor.h"
 #include"standby.h"
@@ -47,9 +48,9 @@ inline void send_out();
 void standBy()
 {
     //red(&ledstrip);
-    green(&ledstrip);
-    /*blue(&ledstrip);
-    cyan(&ledstrip);
+    //green(&ledstrip);
+    blue(&ledstrip);
+    /*cyan(&ledstrip);
     magenta(&ledstrip);
     yellow(&ledstrip);*/
 }

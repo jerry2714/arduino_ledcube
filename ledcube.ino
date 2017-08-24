@@ -179,36 +179,8 @@ inline void strip(bool output, int offset, int length)
 		ledstrip.show();
 }
 
-void DataChangeSim(int(*arr)[6][6], int size)
-{
-	for(int k = 0; k < size; k++)
-	{
-		for(int i = 0; i < size; i++)
-		{
-			for(int j = 0; j < size; j++)
-			{
-				if(i % 2 == 1)
-					arr[k][i][j] = k * size * size + i * size + (size - j - 1);
-				else
-					arr[k][i][j] = k * size * size + i * size + j;
-			}
-		}
-	}
 
-	/* for(int k = 0;
-	   k < size;
-	   k++) { for(int i = 0;
-	   i < size;
-	   i++) { for(int j = 0;
-	   j < size;
-	   j++) //cout<<arr[k][i][j]<<" ";
-	   System.out.print(arr[k][i][j] + " ");
-	   //cout<<"\n";
-	   System.out.println();
-	   } //cout<<"\n";
-	   System.out.println();
-	    */
-}
+
 
 int GCD(int a, int b)
 {

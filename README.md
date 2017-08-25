@@ -1,1 +1,4 @@
 # arduino_ledcube
+
+紓壓繪音方燈的arduino控制程式
+需要Adafruit_NeoPixel函式庫
